@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color:black;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    .lc{
+        background-color:black;
+        border:2px solid black;
+        border-radius:14px;
+        width:390px;
+        height:500px;
+        padding:30px;
+        text-align:center;
+        /* box-shadow:inset 0 0 30px white; */
+        /* display:flex;
+        justify-content:center; */
+    
+    }
+    .loader:before{
+        content:"";
+        font-weight:bold;
+        font-size:5rem;
+        color:white;
+        /* text-shadow:0 0 30px white; */
+        animation: loader 2s infinite;
+    }
+    @keyframes loader {
+        0%{ content:"L"; }
+        10%{ content:"Lo"; }
+        20%{ content:"Loa"; }
+        30%{ content:"Load"; }
+        40%{ content:"Loadi"; }
+        50%{ content:"Loadin"; }
+        60%{ content:"Loading"; }
+        70%{ content:"Loading ."; }
+        80%{ content:"Loading .."; }
+        90%{ content:"Loading ..."; }
+        100%{ content:"Loading ...."; }
+    }
+</style>
+<body>
+    <div class="lc"><br><br>
+    <div class="loader"></div><br><br><br>
+    <h2 style="color:white;">Please wait few seconds...</h2>
+    <p style="color:white;">Your movie is loading to play😉</p>
+</body>
+</html>

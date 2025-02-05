@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addEvent</title>
+</head>
+<body>
+    <div id="all" class="bigbox">
+        <h1>This is my Heading</h1>
+       <p id="para" style="text-align:left;padding-right:32rem;"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+        Maiores fugiat doloremque aspernatur, cumque corporis iste rem. 
+        Expedita aperiam voluptatem magnam nulla est. Libero similique 
+        non hic pariatur omnis optio possimus.
+        </p>
+        </div>
+        <button id="btn" onclick="Hide()">Hide</button>
+        <script>
+            let bigbox=document.getElementById("all");
+            let para=document.getElementById("para");
+            para.addEventListener('mouseover',()=>{
+                bigbox.style.backgroundColor="teal";
+                console.log("Mouse In😉");
+            });
+            para.addEventListener('mouseout',()=>{
+                bigbox.style.backgroundColor="transparent";
+                console.log("Mouse Out😒");
+                });
+                function Hide(){
+                    let btn=document.getElementById("btn");
+                    let para=document.getElementById("para");
+                    let bigbox=document.getElementById("all");
+                    if(para.style.display!="none");
+                    para.style.display="none";
+                    btn.innerHTML="Show";
+                    btn.style="background-color:green";
+                   
+                }
+        </script>
+    </body>
+</html>

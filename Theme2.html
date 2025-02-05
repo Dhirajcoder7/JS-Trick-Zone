@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Changer</title>
+  <style>
+    /* Default styles using CSS variables */
+    :root {
+      --bg-color: white;
+      --text-color: black;
+    }
+
+    /* Apply these variables */
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Center theme buttons */
+    .theme-selector {
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Change Page Theme</h1>
+  <div class="theme-selector">
+    <button onclick="changeTheme('light')">Light Theme</button>
+    <button onclick="changeTheme('dark')">Dark Theme</button>
+    <button onclick="changeTheme('vibrant')">Vibrant Theme</button>
+  </div>
+
+  <script>
+    // JavaScript to change the theme
+    function changeTheme(theme) {
+      if (theme === 'light') {
+        document.documentElement.style.setProperty('--bg-color', 'white');
+        document.documentElement.style.setProperty('--text-color', 'black');
+      } else if (theme === 'dark') {
+        document.documentElement.style.setProperty('--bg-color', '#1e1e1e');
+        document.documentElement.style.setProperty('--text-color', '#f5f5f5');
+      } else if (theme === 'vibrant') {
+        document.documentElement.style.setProperty('--bg-color', '#ffefd5');
+        document.documentElement.style.setProperty('--text-color', '#ff4500');
+      }
+    }
+  </script>
+</body>
+</html>

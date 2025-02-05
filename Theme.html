@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Changer</title>
+  <style>
+    /* Default Theme */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+    }
+
+    /* Light Theme */
+    .light {
+      --bg-color: #f0f0f0;
+      --text-color: #333333;
+    }
+
+    /* Dark Theme */
+    .dark {
+      --bg-color: #1e1e1e;
+      --text-color: #f5f5f5;
+    }
+
+    /* Vibrant Theme */
+    .vibrant {
+      --bg-color: #ffefd5;
+      --text-color: #ff4500;
+    }
+
+    /* General Styles */
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .theme-selector {
+      display: flex;
+      flex-direction:column;
+      gap: 1rem;
+      margin: 10px;
+    }
+
+    .theme-selector label {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Theme Changer</h1>
+  <div class="theme-selector">
+    <label>
+      <input type="radio" name="theme" value="light" > Light
+    </label>
+    <label>
+      <input type="radio" name="theme" value="dark"> Dark
+    </label>
+    <label>
+      <input type="radio" name="theme" value="vibrant"> Vibrant
+    </label>
+  </div>
+
+  <script>
+    // Select all radio buttons
+    const radios = document.querySelectorAll('input[name="theme"]');
+
+    // Add event listeners to each radio button
+    radios.forEach(radio => {
+      radio.addEventListener('change', (theme) => {
+        document.body.className = theme.target.value; // Change body class to selected theme
+      });
+    });
+  </script>
+</body>
+</html>

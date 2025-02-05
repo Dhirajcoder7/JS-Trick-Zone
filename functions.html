@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #abc2f2;
+        }
+    </style>
+</head>
+<body>
+    number : 
+    <input type="text" id="user"><br>
+    <button id="button">show</button>
+    <h2 id="res"></h2>
+    <script>
+    let uinput=document.getElementById('user');
+    let btn = document.getElementById('button')
+    let result=document.getElementById('res');
+    
+    btn.addEventListener('click',function(){
+    //     let number =[1,2,3,4,5,6,7,8,9,10];
+    //   let show= number.forEach(num=>num*uinput).value;
+    //     result.innerHTML=show;
+    let number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let inputValue = Number(uinput.value); // Convert input to number
+        
+        // Use .map() instead of forEach() to get a new array
+        let show = number.map(num => num * inputValue);
+        
+        result.innerHTML = show.join(' <br> '); // Display the result as a string
+    });
+
+    //    function letmetry(...cart){ ///use the 3 dots to pass multiple arguments.
+    //         return cart;
+    //    }
+    //    document.write(letmetry(6,45,5,6,7,6,8,53,7,4)); //output: 6,45,5,6,7,6,8,53,7,4.
+   
+   
+//     let array=[2,3,4,12,21,42,21,32];
+//    function Find(array){
+//     return array;            // Threre are 2 methods,you can find different type.
+//    }
+//    document.write(Find(array[5])); //
+ 
+// let number=[2,3,4,12,21,42,25,32];
+// let even = number.filter(n1=>n1%2===1); // use filter method and find even numbers.
+// document.write(even);
+
+// let number =[1,2,3,4,5,6,7,8,9,10];
+// number.forEach(num=>{
+//     num = num*2;                 // forEach method is take value each element.
+//     document.write(num+"<br>");
+// });
+
+// let number =[1,2,3,4,5,6,7,8,9,10];
+// let double = number.map(num=>num*5); // map method is like forEach method but this are sort method 
+//  document.write(double);
+  
+
+
+</script>
+</body>
+</html>

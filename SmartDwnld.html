@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Form Data & Image as PDF</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: rgb(41, 178, 171);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #fff;
+        font-size: 24px;
+    }
+
+    /* Form Styling */
+    #content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* Image Preview */
+    #previewContainer {
+        display: none;
+        margin-top: 10px;
+    }
+
+    #previewImage {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px #000;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<body>
+
+    <h1>Download Form Data & Image as PDF</h1>
+
+    <div id="content">
+        <label>Name:</label>
+        <input type="text" id="name"><br>
+
+        <label>Age:</label>
+        <input type="number" id="age"><br>
+
+        <label>Address:</label>
+        <textarea id="address" placeholder="Where are you living..."></textarea><br>
+
+        <label>Email:</label>
+        <input type="email" id="email"><br>
+
+        <label>Phone:</label>
+        <input type="tel" id="phone"><br>
+
+        <label>DOB:</label>
+        <input type="date" id="dob"><br>
+
+        <label>Upload Image:</label>
+        <input type="file" id="imageInput" accept="image/*"><br>
+
+        <!-- Image Preview -->
+        <div id="previewContainer">
+            <h3>Image Preview:</h3>
+            <img id="previewImage" src="" alt="Selected Image">
+        </div>
+    </div>
+
+    <button id="download_Btn">Download as PDF</button>
+
+    <!-- Include html2pdf library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const previewContainer = document.getElementById('previewContainer');
+        const previewImage = document.getElementById('previewImage');
+        const downloadButton = document.getElementById('download_Btn');
+
+        let selectedImageData = "";
+
+        // 🔹 Step 1: Image Upload & Preview
+        imageInput.addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    selectedImageData = e.target.result; // Store Image Data
+                    previewImage.src = selectedImageData; // Set Preview Image
+                    previewContainer.style.display = "block"; // Show Preview Section
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // 🔹 Step 2: Download PDF with Form Data & Image
+        downloadButton.addEventListener('click', async function () {
+            const pdfContent = document.createElement("div");
+
+            // Collect Form Data
+            pdfContent.innerHTML = `
+                <h2>User Details</h2>
+                <p><strong>Name:</strong> ${document.getElementById("name").value}</p>
+                <p><strong>Age:</strong> ${document.getElementById("age").value}</p>
+                <p><strong>Address:</strong> ${document.getElementById("address").value}</p>
+                <p><strong>Email:</strong> ${document.getElementById("email").value}</p>
+                <p><strong>Phone:</strong> ${document.getElementById("phone").value}</p>
+                <p><strong>DOB:</strong> ${document.getElementById("dob").value}</p>
+            `;
+
+            // Add Image to PDF
+            if (selectedImageData) {
+                const imgElement = document.createElement("img");
+                imgElement.src = selectedImageData;
+                imgElement.style = "max-width: 100%; display: block; margin-top: 10px;";
+                pdfContent.appendChild(imgElement);
+            }
+
+            const opt = {
+                margin: 10,
+                filename: "user_data.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+            };
+
+            await html2pdf().set(opt).from(pdfContent).save();
+        });
+    </script>
+
+</body>
+
+</html>

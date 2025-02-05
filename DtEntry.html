@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS data entry</title>
+    <style>
+        *{
+            margin:10px;
+            padding:0;
+        }
+        form {
+            width: 400px;
+            height: 250px;
+
+        }
+        @media (max-width:390px) {
+            form{
+                width:95%;
+                height:400px;
+            }
+        }
+
+        fieldset {
+            border: 2px solid black;
+            border-radius:10px;
+            padding: 10px;
+        }
+
+        textarea {
+            box-sizing: border-box;
+            width: 95%;
+            height: 250px;
+            background: rgba(161, 230, 230, 0.212);
+            color:black;
+            font-weight: bold;
+        }
+
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input {
+            margin: 0 5px;
+        }
+    </style>
+    <script>
+        // var Mobile = [" "];
+        // function Add(){
+        //     var dt1 = document.frm.txt.value;
+        //     Mobile.push(dt1);
+        //     document.frm.area.value=Mobile;
+        //     document.frm.txt.value="";
+        //     document.getElementById('txt').focus();
+        // }
+        // function srch(){
+        //     var dt2 = document.frm.txt.value;
+        //     var d = 0;
+            
+        //     for (i=0;i<=Mobile.length;i++)
+        // {
+        //     if(Mobile[i] == dt2)
+        // {
+        //     d=1;
+        //     break;
+        // }
+        // }
+        // if(d==1)
+        // {
+        //     document.frm.area.value=dt2+" is Availible in list";
+        // }
+        // else{
+        //     document.frm.area.value=dt2+" is out of list";
+        // }
+        // }
+        // function Del(){
+        //     var dt3 = document.frm.txt.value;
+
+        //     for(i=0;i<=Mobile.length;i++){
+        //         if(Mobile[i] == dt3){
+        //             delete Mobile[i];
+        //             break;
+        //     }
+        //     }   
+        //     document.frm.txt.value="";
+        //     document.frm.area.value=Mobile;
+        // }
+        var Mobile = [" "];
+        function Add(){
+            var dt1 = document.frm.txt.value;
+            Mobile.push(dt1);
+            document.frm.area.value=Mobile;
+            document.frm.txt.value="";
+            document.getElementById('txt').focus();
+        }
+        function srch(){
+            var dt2 = document.frm.txt.value;
+            var i = Mobile.indexOf(dt2);
+            if(i>=0){
+                document.frm.area.value=dt2+" is found at index "+i;
+            }
+            else{
+                document.frm.area.value=dt2+" is not found";
+            }
+        }
+        function del(){
+            var dt3 = document.frm.txt.value;
+            var i = Mobile.indexOf(dt3);
+            if(i>=0){
+                Mobile.splice(i,1);
+                document.frm.area.value=dt3+" is deleted";
+            }
+            else{
+                document.frm.area.value=dt3+" is not found";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form name="frm">
+        <fieldset>
+            <legend>Mobile Shop</legend>
+            Enter Phone Name :<input type="text" name="txt" id="txt"><br><br>
+            <div class="center">
+                <input type="button" value="Add to list" onclick="Add()">
+                <input type="button" value="Search" onclick="srch()">
+                <input type="button" value="Delet" onclick="Del()">
+            </div><br>
+            <textarea name="area" rows="4" cols="25" disabled></textarea>
+        </fieldset>
+        <a href="country.html">Restart</a>
+    </form>
+   
+
+</body>
+
+</html>

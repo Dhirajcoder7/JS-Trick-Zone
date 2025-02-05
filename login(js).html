@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript if else </title>
+    <style>
+        *{
+            padding:0;
+        }
+        .bigbox{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height:45rem;
+
+        }
+        .bigbox::before{
+            content: "";
+            position: absolute;
+            top:0;
+            background:url(car2.jpg)no-repeat center/cover;
+            height:100%;
+            width:100%;
+        }
+        .login{
+            border: 1px solid rgba(155, 117, 117, 0.164);
+            height: 30rem;
+            width: 25rem;
+            border:1px solid rgba(241, 232, 232, 0.521);
+            border-radius: 30px;
+            background-color:rgba(28, 158, 126, 0.185);
+            box-shadow:0 0 100px white;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+
+        }
+      
+        .login:hover{
+            transition:ease-in 0.3s;
+            transform:scale(1.05);
+        }
+        input{
+           width:20rem;
+           height: 2rem;
+           border:2px solid lightsteelblue;
+           border-radius:30px;
+        }
+        input:hover{
+            transition:0.5s;
+            transform: scale(1.03);
+        }
+        input:active{
+            transition:0.5s;
+            transform: scale(1.10);
+        }
+        label{
+            position: relative;
+            left:-110px;
+            text-shadow: 0 0 5px white;
+             font-weight: bold;
+             font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        #sub{
+            position:relative;
+            top: 5rem;
+            height:2.5rem;
+            width: 7rem;
+            border: 2px solid rgba(41, 39, 39, 0.336);
+            border-radius: 25px;
+            background-color:white;
+            color: teal;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        #sub:hover{
+            transition:0.5s;
+            transform: scale(1.10);
+        }
+        #sub:active{
+            color: black;
+            box-shadow: 0 0 50px white;
+        }
+    </style>
+</head>
+<body>
+    <div class="bigbox" target="black">
+        <div class="login">
+        <h1 style="font-size:2.5rem;text-shadow:0 0 5px white;">Log in</h1>
+        <form  >
+        <label for="name">User name</label><br><input type="text" name="us" id="user"><br><br><br>
+        <label for="pass">Password</label><br><input type="password" name="ps" id="pass">
+       
+        <input type="button" value="Sign In" id="sub" onclick="Login()">
+    </form>
+        </div>
+    </div>
+    <script >
+        //  -----Login access---(type - 1)
+        
+
+        function Login() {
+         let User = document.getElementById("user").value;
+         let Pass = document.getElementById("pass").value;
+         if(User=="Dhiraj" && Pass==123){
+           window.location.href='country.html';
+         }
+         else{
+            alert("Invalid User Name or Password !");
+         }
+        }
+        
+       
+
+</script>
+</body>
+</html>
